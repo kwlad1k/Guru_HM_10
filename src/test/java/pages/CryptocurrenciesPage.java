@@ -26,13 +26,18 @@ public class CryptocurrenciesPage {
         return this;
     }
 
-    public CryptocurrenciesPage searchTab() {
-        $("[placeholder='Search for Tab...']").setValue("Bullish assets");
+    public CryptocurrenciesPage searchTab(String searchQuery) {
+        $("[placeholder='Search for Tab...']").setValue(searchQuery);
         return this;
     }
 
-    public CryptocurrenciesPage checkResultSearch() {
-        $("[role='dialog'] ul li").shouldHave(text("Bullish assets"));
+    public CryptocurrenciesPage checkResultSearch(String searchQuery) {
+        $("[role='dialog'] ul li").shouldHave(text(searchQuery));
+        return this;
+    }
+
+    public CryptocurrenciesPage CheckUserNameOwner(String userName) {
+        $("[role='dialog'] ul li").shouldHave(text(userName));
         return this;
     }
 }
