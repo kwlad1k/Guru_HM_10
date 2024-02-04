@@ -16,13 +16,13 @@ public class CryptocurrenciesPage {
     }
 
     public CryptocurrenciesPage clickTabLibraryButton() {
-        tabLibraryButton.click();
+        tabLibraryButton.cached().click();;
         $("[aria-modal='true']").shouldBe(visible);
         return this;
     }
 
     public CryptocurrenciesPage clickTrendingButton() {
-        $("[data-screen='library-trending'").click();
+        $("[data-screen='library-trending'").cached().click();
         return this;
     }
 
@@ -40,4 +40,5 @@ public class CryptocurrenciesPage {
         $("[role='dialog'] ul li").shouldHave(text(userName));
         return this;
     }
+
 }
