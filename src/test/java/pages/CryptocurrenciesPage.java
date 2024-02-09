@@ -1,5 +1,6 @@
 package pages;
 
+import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.SelenideElement;
 
 import static com.codeborne.selenide.Condition.text;
@@ -16,7 +17,7 @@ public class CryptocurrenciesPage {
     }
 
     public CryptocurrenciesPage clickTabLibraryButton() {
-        tabLibraryButton.cached().click();;
+        tabLibraryButton.shouldBe(Condition.interactable).click();;
         $("[aria-modal='true']").shouldBe(visible);
         return this;
     }

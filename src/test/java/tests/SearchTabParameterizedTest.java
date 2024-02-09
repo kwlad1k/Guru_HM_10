@@ -45,13 +45,13 @@ public class SearchTabParameterizedTest extends TestBase {
 
     @MethodSource
     @ParameterizedTest(name = "Проверка поисковго запроса таба с названием: {0} и именем владельца {1} через библиотеку табов Trending")
-    void searchResultsShouldContainExpectedUserName1(String searchQuery, List<String> ownerUser) {
+    void searchResultsShouldContainExpectedUserName1(String searchQuery, String ownerUser) {
         cryptocurrenciesPage.openPage()
                 .clickTabLibraryButton()
                 .clickTrendingButton()
                 .searchTab(searchQuery)
                 .checkResultSearch(searchQuery)
-                .checkResultSearch(String.valueOf(ownerUser));
+                .checkResultSearch(ownerUser);
     }
 }
 
