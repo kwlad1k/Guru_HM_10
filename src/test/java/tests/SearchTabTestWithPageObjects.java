@@ -17,7 +17,6 @@ public class SearchTabTestWithPageObjects extends TestBase {
                 .clickTrendingButton()
                 .searchTab("Bullish assets")
                 .checkResultSearch("Bullish assets")
-                .CheckUserNameOwner("bruce");
-        sleep(1000);
+                .checkUserNameOwner("bruce");
     }
 }

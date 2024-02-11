@@ -7,7 +7,6 @@ import org.junit.jupiter.params.provider.MethodSource;
 import org.junit.jupiter.params.provider.ValueSource;
 import pages.CryptocurrenciesPage;
 
-import java.util.List;
 import java.util.stream.Stream;
 
 public class SearchTabParameterizedTest extends TestBase {
@@ -33,19 +32,19 @@ public class SearchTabParameterizedTest extends TestBase {
                 .clickTrendingButton()
                 .searchTab(searchQuery)
                 .checkResultSearch(searchQuery)
-                .CheckUserNameOwner(userName);
+                .checkUserNameOwner(userName);
     }
 
-    static Stream<Arguments> searchResultsShouldContainExpectedUserName1() {
+    static Stream<Arguments> dataForMethodSource() {
         return Stream.of(
                 Arguments.of("Bullish assets", "bruce"),
                 Arguments.of("Gems with Binance Liquidity", "willAchieve100")
         );
     }
 
-    @MethodSource
+    @MethodSource("dataForMethodSource")
     @ParameterizedTest(name = "Проверка поисковго запроса таба с названием: {0} и именем владельца {1} через библиотеку табов Trending")
-    void searchResultsShouldContainExpectedUserName1(String searchQuery, String ownerUser) {
+    void searchResultsShouldContainExpectedUserNameWithMethodSource(String searchQuery, String ownerUser) {
         cryptocurrenciesPage.openPage()
                 .clickTabLibraryButton()
                 .clickTrendingButton()

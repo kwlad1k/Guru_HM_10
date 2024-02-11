@@ -9,36 +9,45 @@ import static com.codeborne.selenide.Selenide.*;
 
 public class CryptocurrenciesPage {
 
-    private SelenideElement tabLibraryButton = $("[aria-label='Open Tab Library dialog']");
+    private final SelenideElement tabLibraryButton = $("[aria-label='Open Tab Library dialog']"),
+    trendingButton = $("[data-screen='library-trending'"),
+    searchTabInput = $("[placeholder='Search for Tab...']"),
+    resultTabList = $("[role='dialog'] ul li");
+
 
     public CryptocurrenciesPage openPage() {
         open("");
+
         return this;
     }
 
     public CryptocurrenciesPage clickTabLibraryButton() {
-        tabLibraryButton.shouldBe(Condition.interactable).click();;
-        $("[aria-modal='true']").shouldBe(visible);
+        tabLibraryButton.shouldBe(Condition.interactable).click();
+
         return this;
     }
 
     public CryptocurrenciesPage clickTrendingButton() {
-        $("[data-screen='library-trending'").cached().click();
+        trendingButton.click();
+
         return this;
     }
 
     public CryptocurrenciesPage searchTab(String searchQuery) {
-        $("[placeholder='Search for Tab...']").setValue(searchQuery);
+        searchTabInput.setValue(searchQuery);
+
         return this;
     }
 
     public CryptocurrenciesPage checkResultSearch(String searchQuery) {
-        $("[role='dialog'] ul li").shouldHave(text(searchQuery));
+        resultTabList.shouldHave(text(searchQuery));
+
         return this;
     }
 
-    public CryptocurrenciesPage CheckUserNameOwner(String userName) {
-        $("[role='dialog'] ul li").shouldHave(text(userName));
+    public CryptocurrenciesPage checkUserNameOwner(String userName) {
+        resultTabList.shouldHave(text(userName));
+
         return this;
     }
 
